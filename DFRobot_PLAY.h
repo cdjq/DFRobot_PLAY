@@ -120,16 +120,16 @@ public:
   bool delCurFile();
   
   /**
-   * @brief 播放指定路径文件一次
+   * @brief 播放指定路径文件
    * @param 指定路径
    */
   void playSpecFile(String str);
   
   /**
-   * @brief 播放指定编号文件一次,编号根据文件拷贝进入U盘先后顺序排列
-   * @param 文件名编号：0-999
+   * @brief 播放指定编号文件,编号根据文件拷贝进入U盘先后顺序排列
+   * @param 文件编号，可通过getCurFileNumber()获取
    */
-  void playSpecFile(int16_t num);
+  void playFileNum(int16_t num);
 
   /**
    * @brief 获取音量

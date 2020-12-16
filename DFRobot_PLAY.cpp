@@ -216,7 +216,7 @@ void DFRobot_PLAY::playSpecFile(String str){
     return ;
    }
 }
-void DFRobot_PLAY::playSpecFile(int16_t num){
+void DFRobot_PLAY::playFileNum(int16_t num){
    if(curFunction != MUSIC) return false;
    sPacket_t cmd;
    cmd = pack("PLAYNUM",String(num));

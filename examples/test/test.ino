@@ -75,7 +75,7 @@ void setup(){
   rp.playSpecFile("/DF***/*******.MP3");
   delay(3000);
 
-  rp.playSpecFile(2);
+  rp.playFileNum(2);
   delay(3000);
   Serial.print("start = ");
   //Serial.println(rp.delCurFile());

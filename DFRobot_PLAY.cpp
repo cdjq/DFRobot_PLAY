@@ -205,26 +205,26 @@ bool DFRobot_PLAY::delCurFile(){
    }
 
 }
-void DFRobot_PLAY::playSpecFile(String str){
+bool DFRobot_PLAY::playSpecFile(String str){
    if(curFunction != MUSIC) return false;
    sPacket_t cmd;
    cmd = pack("PLAYFILE",str);
    writeATCommand(cmd.str,cmd.length);
    if(readAck() == "OK\r\n"){
-    return ;
+    return true;
    } else{
-    return ;
+    return false;
    }
 }
-void DFRobot_PLAY::playFileNum(int16_t num){
+bool DFRobot_PLAY::playFileNum(int16_t num){
    if(curFunction != MUSIC) return false;
    sPacket_t cmd;
    cmd = pack("PLAYNUM",String(num));
    writeATCommand(cmd.str,cmd.length);
    if(readAck() == "OK\r\n"){
-    return ;
+    return true;
    } else{
-    return ;
+    return false;
    }
 }
 bool DFRobot_PLAY::fastForward(uint16_t second){

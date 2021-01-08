@@ -14,13 +14,13 @@
 #include <DFRobot_PLAY.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial Serial1(2, 3);  //RX  TX
+SoftwareSerial DF1201SSerial(2, 3);  //RX  TX
 
 DFRobot_PLAY DF1201S;
 void setup(void){
   Serial.begin(115200);
-  Serial1.begin(115200);
-  while(!DF1201S.begin(Serial1)){
+  DF1201SSerial.begin(115200);
+  while(!DF1201S.begin(DF1201SSerial)){
     Serial.println("初始化失败，请检查接线！");
     delay(1000);
   }

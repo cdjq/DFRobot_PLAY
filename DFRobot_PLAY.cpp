@@ -1,7 +1,7 @@
 /*!
  *@file DFRobot_PLAY.cpp
  *@brief 定义DFRobot_PLAY 类的基础结构，基础方法的实现
- *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (         http://www.dfrobot.com)
+ *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@licence     The MIT License (MIT)
  *@author [fengli](li.feng@dfrobot.com)
  *@version  V1.0
@@ -363,21 +363,19 @@ String DFRobot_PLAY::getFileName(){
    //Serial.println(str);
    for(uint16_t i = 0;i < str.length();i+=2){
      uint16_t dataUnicode = (str[i+1] << 8) | (uint8_t)str[i];
-	 if(dataUnicode == 0x0a0d) break;
-	 //Serial.println((uint8_t)str[i+1],HEX);
-	 //Serial.println((uint8_t)str[i],HEX);
-	 //Serial.println(dataUnicode,HEX);
-	 //Serial.print(" ");
+     if(dataUnicode == 0x0a0d) break;
+     //Serial.println((uint8_t)str[i+1],HEX);
+     //Serial.println((uint8_t)str[i],HEX);
+     //Serial.println(dataUnicode,HEX);
+     //Serial.print(" ");
      uint8_t len = unicodeToUtf8(dataUnicode,dataUtf8);
-	 //Serial.println(len);
+     //Serial.println(len);
       char *cDataUtf8 =(char *)dataUtf8;
       
-	 for(uint8_t i=0;i < len ;i++){
-         name += cDataUtf8[i];
-         //Serial.print(cDataUtf8[i],HEX);
-		 //Serial.print(" ");
+      for(uint8_t i=0;i < len ;i++){
+        name += cDataUtf8[i];
+        //Serial.print(cDataUtf8[i],HEX);
      }
-	 //Serial.println();
    }
    return name;
 }
@@ -458,14 +456,13 @@ DFRobot_PLAY::sPacket_t DFRobot_PLAY::pack(String cmd ,String para){
   return pack;
 }
 void DFRobot_PLAY::writeATCommand(String command,uint8_t length){
-   uint8_t data[40];
-   //Serial.print(command);
+    uint8_t data[40];
     while(_s->available()) {
          _s->read();
     }
-   for(uint8_t i=0;i<length;i++)
+    for(uint8_t i=0;i<length;i++)
       data[i] = command[i];
-   _s->write(data,length);
+    _s->write(data,length);
 }
 
 
@@ -477,11 +474,8 @@ String DFRobot_PLAY::readAck(uint8_t len){
   long long curr = millis();
   if(len == 0){
     while(1) {
-       //Serial.println("1");
       if(_s->available()) {
         str += (char)_s->read();
-		//Serial.print((uint8_t)str[offset],HEX);
-		//Serial.print(" ");
         offset++;
       }
       if((str[offset - 1]) == '\n' && (str[offset - 2] == '\r')) break;
@@ -489,7 +483,7 @@ String DFRobot_PLAY::readAck(uint8_t len){
         return "error";
         break;
       }
-	}
+    }
 
   } else {
     while(left) {
@@ -506,9 +500,6 @@ String DFRobot_PLAY::readAck(uint8_t len){
   }
   str[len]=0;
   }
-  //Serial.print("  ");
-  //Serial.println(offset);
-  
   return str;
 }
 

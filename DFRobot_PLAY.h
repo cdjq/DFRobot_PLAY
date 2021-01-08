@@ -45,6 +45,10 @@ public:
 
   DFRobot_PLAY();
   //~DFRobot_PLAY();
+  /**
+   * @brief init function
+   * @return true or false
+   */
   bool begin(Stream &s);
   
   /**
@@ -89,7 +93,6 @@ public:
    */
   bool switchFunction(eFunction_t function);
   
-  //bool operation( );
   /**
    * @brief 下一曲
    * @return true or false

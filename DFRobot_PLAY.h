@@ -1,6 +1,6 @@
 /*!
  *@file DFRobot_PLAY.cpp
- *@brief 定义DFRobot_PLAY 类的基础结构，基础方法的实现
+ *@brief Define the basic structure of class DFRobot_PLAY, the implementation of basic methods.
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@licence     The MIT License (MIT)
  *@author [fengli](li.feng@dfrobot.com)
@@ -23,8 +23,8 @@ class DFRobot_PLAY
 public:
 
   typedef enum{
-    MUSIC = 1,  //音乐模式
-    UFDISK,     //从机模式
+    MUSIC = 1,  //Music Mode 
+    UFDISK,     //Slave mode 
   }eFunction_t;
   
   typedef struct{
@@ -33,11 +33,11 @@ public:
   }sPacket_t;
   
   typedef enum{
-    SINGLECYCLE = 1,  //单曲循环
-    ALLCYCLE,         //全部循环
-    SINGLE,           //单曲播放一次
-    RANDOM,           //随机播放
-    FOLDER,           //文件夹循环
+    SINGLECYCLE = 1,  //Repeat one song 
+    ALLCYCLE,         //Repeat all 
+    SINGLE,           //Play one song only 
+    RANDOM,           //Random
+    FOLDER,           //Repeat all songs in folder 
     ERROR,             
   }ePlayMode_t;
 
@@ -52,151 +52,151 @@ public:
   bool begin(Stream &s);
   
   /**
-   * @brief 设置波特率(需断电重启，掉电保存)
+   * @brief Set baud rate(Need to power off and restart, power-down save)
    * @param 9600,19200,38400,57600,115200
    * @return true or false
    */
   bool setBaudRate(uint32_t baud);
 
   /**
-   * @brief 设置播放模式
+   * @brief Set playback mode 
    * @param ePlayMode_t:SINGLECYCLE,ALLCYCLE,SINGLE,RANDOM,FOLDER
    * @return true or false
    */
   bool setPlayMode(ePlayMode_t mode);
 
   /**
-   * @brief 设置指示灯(掉电保存)
+   * @brief Set indicator LED(Power-down save) 
    * @param true or false
    * @return true or false
    */
   bool setLED(bool on);
   
   /**
-   * @brief 设置提示音(掉电保存)
+   * @brief Set the prompt tone(Power-down save) 
    * @param true or false
    * @return true or false
    */
   bool setPrompt(bool on);
   
   /**
-   * @brief 设置音量
+   * @brief Set volume 
    * @param vol:0-30
    * @return true or false
   */
   bool setVol(uint8_t vol);
   
   /**
-   * @brief 设置工作模式
+   * @brief Set working mode 
    * @param eFunction_t:MUSIC,RECORD,UFDISK
    * @return true or false
    */
   bool switchFunction(eFunction_t function);
   
   /**
-   * @brief 下一曲
+   * @brief Next 
    * @return true or false
    */
   bool next();
   
   /**
-   * @brief 上一曲
+   * @brief Previous 
    * @return true or false
    */
   bool last();
   
   /**
-   * @brief 播放(在音乐模式下) or 录音(在录音模式下)
+   * @brief Play 
    * @return true or false
    */
   bool start();
   
   /**
-   * @brief 暂停播放(在音乐模式下) or 暂停录音(在录音模式下)
+   * @brief Pause 
    * @return true or false
    */
   bool pause();
   /**
-   * @brief 删除当前播放文件
+   * @brief Delete the currently-playing file 
    * @return true or false
    */
   bool delCurFile();
   
   /**
-   * @brief 播放指定路径文件
-   * @param 指定路径
+   * @brief Play file of the specific path 
+   * @param The designated path 
    */
   bool playSpecFile(String str);
   
   /**
-   * @brief 播放指定编号文件,编号根据文件拷贝进入U盘先后顺序排列
-   * @param 文件编号，可通过getCurFileNumber()获取
+   * @brief Play the file of specific number, the numbers are arranged according to the sequences the files copied into the U-disk 
+   * @param File number, can be obtained by getCurFileNumber()
    */
   bool playFileNum(int16_t num);
 
   /**
-   * @brief 获取音量
+   * @brief Get volume 
    * @return vol
    */
   uint8_t getVol();
 
   /**
-   * @brief 获取播放模式
+   * @brief Get palyback mode 
    * @return ePlayMode_t
    */
   ePlayMode_t getPlayMode();
   
   /**
-   * @brief 获取文件编号
+   * @brief Get file number 
    */
   uint16_t getCurFileNumber();
   
   /**
-   * @brief 获取可播放文件的个数
+   * @brief Get the number of files available to play 
    */
   uint16_t getTotalFile();
   
   /**
-   * @brief 获取当前歌曲播放到的时间
+   * @brief Get the time length the current song has played 
    */
   uint16_t getCurTime();
   
   /**
-   * @brief 获取当前歌曲播放的总时间
+   * @brief Get the total length of the currently-playing song
    */
   uint16_t getTotalTime();
   
   /**
-   * @brief 获取播放文件的文件名
+   * @brief Get the name of the playing file 
    */
   String   getFileName();
   
   /**
-   * @brief 使能功放芯片
+   * @brief Enable Amplifier chip
    * @return true or false
    */
   bool enableAMP();
   /**
-   * @brief 禁止功放芯片
+   * @brief Disable Amplifier chip
    * @return true or false
    */
   bool disableAMP();
   
   /**
-   * @brief 使当前播放歌曲快进
-   * @param second  快进的时间(单位：S)
+   * @brief Fast forward the currently-playing song
+   * @param second  FF time(Unit: S) 
    */
   bool fastForward(uint16_t second);
   
   /**
-   * @brief 使当前播放歌曲后退
-   * @param second  后退的时间(单位：S)
+   * @brief Fast Rewind the currently-playing song 
+   * @param second  FR time(Unit: S)
    */
   bool fastReverse(uint16_t second);
   
   /**
-   * @brief 使当前播放歌曲从固定时间点开始播放
-   * @param second  固定时间点
+   * @brief Let the currently-playing song start playing from a particular time point 
+   * @param second  Fixed time point
    */
   bool setPlayTime(uint16_t second);
 private:

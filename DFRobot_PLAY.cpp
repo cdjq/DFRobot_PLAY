@@ -1,6 +1,6 @@
 /*!
  *@file DFRobot_PLAY.cpp
- *@brief 定义DFRobot_PLAY 类的基础结构，基础方法的实现
+ *@brief Define the basic structure of class DFRobot_PLAY, the implementation of the basic methods
  *@copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@licence     The MIT License (MIT)
  *@author [fengli](li.feng@dfrobot.com)

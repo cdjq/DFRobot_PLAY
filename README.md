@@ -1,9 +1,6 @@
 # DFRobot_PLAY
 
-您是否在寻找一款简单又强大的MP3播放模块？看这里！这款MP3播放模块支持arduino、AT指令、板载按键和AD按键四种控制方式。
-通过板载按键即使在没有微控制器的情况下也能进行音乐播放和切换。模块搭载了128MB的存储空间，通过USB线您可以很容易的将
-您喜欢的音乐拷贝到模块中。该模块可作为电脑或Raspberry Pi声卡，用USB数据线将模块和电脑连接，电脑播放音乐即可通过该
-模块输出。
+Here comes the DFPlayer Pro-a mini simple but powerful MP3 Player! This MP3 player module supports four controlling modes: Arduino, AT command, on-board buttons, and ADKEY. You can directly press the on-board button to play or switch music without using a controller. By using a USB cable, you can easily copy your favorite songs into this module to play them any where you want, or use it as a sound card for your PC or Raspberry Pi after connecting them together.
 
 ## Table of Contents
 
@@ -15,7 +12,7 @@
 * [Credits](#credits)
 
 ## Summary
-1.播放音乐
+1. Playing Music
 
 
 
@@ -32,61 +29,61 @@ To use this library, first download the library file, paste it into the \Arduino
   bool begin(Stream &s);
   
   /**
-   * @brief 设置波特率(需断电重启，掉电保存)
+   * @brief Set baud rate(Need to power off and restart, power-down save) 
    * @param 9600,19200,38400,57600,115200
    * @return true or false
    */
   bool setBaudRate(uint32_t baud);
 
   /**
-   * @brief 设置播放模式
+   * @brief Set playback mode 
    * @param ePlayMode_t:SINGLECYCLE,ALLCYCLE,SINGLE,RANDOM,FOLDER
    * @return true or false
    */
   bool setPlayMode(ePlayMode_t mode);
 
   /**
-   * @brief 设置指示灯(掉电保存)
+   * @brief Set indicator(Power-down save) 
    * @param true or false
    * @return true or false
    */
   bool setLED(bool on);
   
   /**
-   * @brief 设置提示音(掉电保存)
+   * @brief Set prompt tone (Power-down save) 
    * @param true or false
    * @return true or false
    */
   bool setPrompt(bool on);
   
   /**
-   * @brief 设置音量
+   * @brief Set volume 
    * @param vol:0-30
    * @return true or false
   */
   bool setVol(uint8_t vol);
   
   /**
-   * @brief 设置工作模式
+   * @brief Set working mode 
    * @param eFunction_t:MUSIC,RECORD,UFDISK
    * @return true or false
    */
   bool switchFunction(eFunction_t function);
   
   /**
-   * @brief 下一曲
+   * @brief Next 
    * @return true or false
    */
   bool next();
   
   /**
-   * @brief 上一曲
+   * @brief Previous 
    * @return true or false
    */
   bool last();
   
   /**
-   * @brief 播放(在音乐模式下) or 录音(在录音模式下)
+   * @brief Play播放(在音乐模式下) or 录音(在录音模式下)
    * @return true or false
    */
   bool start();

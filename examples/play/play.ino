@@ -1,6 +1,6 @@
 /*!
  *@file play.ino
- *@brief  音乐播放示例程序
+ *@brief Music Playing Example Program 
  *@copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  *@licence     The MIT License (MIT)
  *@author [fengli](li.feng@dfrobot.com)
@@ -21,86 +21,86 @@ void setup(void){
   Serial.begin(115200);
   DF1201SSerial.begin(115200);
   while(!DF1201S.begin(DF1201SSerial)){
-    Serial.println("初始化失败，请检查接线！");
+    Serial.println("Init failed, please check the wire connection!");
     delay(1000);
   }
-  /*设置音量为20*/
+  /*Set volume to 20*/
   DF1201S.setVol(/*VOL = */20);
   Serial.print("VOL:");
-  /*获取音量*/
+  /*Get volume*/
   Serial.println(DF1201S.getVol());
-  /*进入音乐模式*/
+  /*Enter music mode*/
   DF1201S.switchFunction(DF1201S.MUSIC);
-  /*等待提示音播放完*/
+  /*Wait for the end of the prompt tone */
   delay(2000);
-  /*设置播放模式为全部循环*/
+  /*Set playback mode to "repeat all"*/
   DF1201S.setPlayMode(DF1201S.ALLCYCLE);
   Serial.print("PlayMode:");
-  /*获取播放模式*/
+  /*Get playback mode*/
   Serial.println(DF1201S.getPlayMode());
   
-  //设置波特率为115200(需断电重启，掉电保存)
+  //Set baud rate to 115200(Need to power off and restart, power-down save)
   //DF1201S.setBaudRate(115200);
-  //打开指示灯(掉电保存)
+  //Turn on indicator LED (Power-down save)
   //DF1201S.setLED(true);
-  //打开提示音(掉电保存)
+  //Turn on the prompt tone (Power-down save) 
   //DF1201S.setPrompt(true);
-  //使能功放芯片
+  //Enable amplifier chip 
   //DF1201S.enableAMP();
-  //失能功放芯片
+  //Disable amplifier chip 
   //DF1201S.disableAMP();
 }
 
 void loop(){
-  Serial.println("开始播放");
-  /*开始播放*/
+  Serial.println("Start playing");
+  /*Start playing*/
   DF1201S.start();
   delay(3000);
-  Serial.println("暂停播放");
-  /*暂停播放*/
+  Serial.println("Pause");
+  /*Pause*/
   DF1201S.pause();
   delay(3000);
-  Serial.println("播放下一曲");
-  /*播放下一曲*/
+  Serial.println("Next");
+  /*Play the next song*/
   DF1201S.next();
   delay(3000);
-  Serial.println("播放上一曲");
-  /*播放上一曲*/
+  Serial.println("Previous");
+  /*Play the previous song*/
   DF1201S.last();
   delay(3000);
-  Serial.println("开始播放");
-  //快进10S
+  Serial.println("Start playing");
+  //Fast forward 10S
   DF1201S.fastForward(/*FF = */10);
-  //快退10S
+  //Fast Rewind 10S
   //DF1201S.fastReverse(/*FR = */10);
-  //从第10S开始播放
+  //Start the song from the 10th second 
   //DF1201S.setPlayTime(/*Play Time = */10);
   
-  Serial.print("文件号:");
-  //获取文件号
+  Serial.print("File number:");
+  //Get file number
   Serial.println(DF1201S.getCurFileNumber());
   
-  Serial.print("可播放文件的个数:");
-  //获取可播放文件的个数
+  Serial.print("The number of files available to play:");
+  //The number of files available to play
   Serial.println(DF1201S.getTotalFile());
   
-  Serial.print("当前歌曲播放到的时间:");
-  //获取当前歌曲播放到的时间
+  Serial.print("The time length the current song has played:");
+  //Get the time length the current song has played 
   Serial.println(DF1201S.getCurTime());
   
-  Serial.print("当前歌曲播放的总时间:");
-  //获取当前歌曲播放的总时间
+  Serial.print("The total length of the currently-playing song: ");
+  //Get the total length of the currently-playing song 
   Serial.println(DF1201S.getTotalTime());
-  Serial.print("当前播放文件名:");
-  //获取播放文件的文件名
+  Serial.print("The name of the currently-playing file: ");
+  //Get the name of the playing file 
   Serial.println(DF1201S.getFileName());
   delay(3000);
-  //播放第一号文件,编号根据文件拷贝进入U盘先后顺序排列
+  //Play the file No.1, the numbers are arranged according to the sequence of the files copied into the U-disk 
   DF1201S.playFileNum(/*File Number = */1);
-  //播放test文件夹下的test.mp3文件
+  //Play the test.mp3 file in test folder 
   //DF1201S.playSpecFile("/test/test.mp3");
   
   while(1);
-  /*删除正在播放的文件*/
+  /*Delete the currently-playing file */
   //DF1201S.delCurFile();
 }
